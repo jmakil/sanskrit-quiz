@@ -88,24 +88,84 @@ const quizData = [
     question: "What is the meaning of 'अस् (as)'?",
     options: ["To speak", "To exist", "To lie", "To hear"],
     answer: "To exist"
+  },
+  {
+    question: "What is the English meaning of 'शृणु (śṛṇu)'?",
+    options: ["To write", "To hear", "To build", "To lead"],
+    answer: "To hear"
+  },
+  {
+    question: "What does 'चर् (car)' mean?",
+    options: ["To go", "To walk", "To jump", "To run"],
+    answer: "To walk"
+  },
+  {
+    question: "Meaning of 'स्वप् (svap)'?",
+    options: ["To eat", "To think", "To sleep", "To cry"],
+    answer: "To sleep"
+  },
+  {
+    question: "What is the meaning of 'नृत् (nṛt)'?",
+    options: ["To fight", "To dance", "To fly", "To stand"],
+    answer: "To dance"
+  },
+  {
+    question: "What does 'कथ् (kath)' mean?",
+    options: ["To speak", "To run", "To draw", "To carry"],
+    answer: "To speak"
+  },
+  {
+    question: "Meaning of 'क्रीड् (krīḍ)'?",
+    options: ["To drink", "To read", "To swim", "To play"],
+    answer: "To play"
+  },
+  {
+    question: "What is the English meaning of 'वर्ज् (varj)'?",
+    options: ["To avoid", "To invite", "To write", "To help"],
+    answer: "To avoid"
+  },
+  {
+    question: "What does 'ज्ञा (jñā)' mean?",
+    options: ["To know", "To run", "To build", "To create"],
+    answer: "To know"
+  },
+  {
+    question: "Meaning of 'भज् (bhaj)'?",
+    options: ["To share", "To sing", "To see", "To remember"],
+    answer: "To share"
+  },
+  {
+    question: "What is the meaning of 'रक्ष् (rakṣ)'?",
+    options: ["To protect", "To eat", "To hide", "To jump"],
+    answer: "To protect"
+  },
+  {
+    question: "What does 'पूज् (pūj)' mean?",
+    options: ["To worship", "To read", "To stop", "To laugh"],
+    answer: "To worship"
+  },
+  {
+    question: "Meaning of 'जि (ji)'?",
+    options: ["To win", "To cry", "To see", "To love"],
+    answer: "To win"
   }
-  
 ];
 
-// DOM elements
+// DOM elements, which connects the HTML to the JS
 const questionEl = document.getElementById("question");
 const optionButtons = document.querySelectorAll(".option-btn");
 const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
 const nextBtn = document.getElementById("next-btn");
 
+//Variables - Keep track of questions, the sscore, the number of correct answers, countdown for the timer
 let currentQuestion = 0;
 let score = 0;
 let timeLeft = 60;
 let timerInterval;
 
 
-// Load the current question
+// Load the current question and display it in the HTML Page.
 function loadQuestion() {
   const q = quizData[currentQuestion];
   questionEl.textContent = q.question;
@@ -118,8 +178,9 @@ function loadQuestion() {
   if (!timerInterval) {
     timerInterval = setInterval(() => {
       timeLeft--;
+      //Checks if the timer hasn't started yet.
       document.getElementById("timer").textContent = `Time left: ${timeLeft}s`;
-  
+      //Updates the timer display in the HTML page.
       if (timeLeft <= 0) {
         clearInterval(timerInterval);
         endQuizDueToTime();
